@@ -21,6 +21,12 @@ const showCounter = document.createElement("div");
 showCounter.innerHTML = `${counter} Shark Food (he hungy)`;
 app.append(showCounter);
 
+// adding the interval
+setInterval(() => {
+  counter++;
+  showCounter.innerHTML = `${counter} Shark Food (he hungy)`;
+}, 1000);
+
 button.addEventListener("mousedown", () => {
   console.log("click registered");
   counter++;
