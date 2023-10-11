@@ -2,8 +2,9 @@ import "./style.css";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
 
-const gameName = "Ashley's game :D";
-let counter: number = 0;
+const gameName = "Feed sharky";
+let counter: number = 0.0;
+let currentTimestamp = performance.now();
 
 document.title = gameName;
 
@@ -22,15 +23,27 @@ showCounter.innerHTML = `${counter} Shark Food (he hungy)`;
 app.append(showCounter);
 
 // adding the interval
-setInterval(() => {
-  counter++;
-  showCounter.innerHTML = `${counter} Shark Food (he hungy)`;
-}, 1000);
+// setInterval(() => {
+//   counter++;
+//   showCounter.innerHTML = `${counter} Shark Food (he hungy)`;
+// }, 1000);
+
+function updateCounter() {
+  const nowTime = performance.now();
+  const deltaTime = (nowTime - currentTimestamp) / 1000;
+  counter += deltaTime;
+  showCounter.innerHTML = `${counter.toFixed(2)} Shark Food (he hungy)`;
+
+  currentTimestamp = nowTime;
+  requestAnimationFrame(updateCounter);
+}
 
 button.addEventListener("mousedown", () => {
   console.log("click registered");
   counter++;
-  showCounter.innerHTML = `${counter} Shark Food (he hungy)`;
+  showCounter.innerHTML = `${counter.toFixed(2)} Shark Food (he hungy)`;
 });
 
 app.append(button);
+
+requestAnimationFrame(updateCounter);
