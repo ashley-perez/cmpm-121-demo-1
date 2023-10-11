@@ -27,9 +27,9 @@ firstUpgradeButton.innerText = "🦐 not filling";
 firstUpgradeButton.addEventListener("click", () => {
   if (counter >= 10) {
     counter -= 10;
-    growthrate += 1 / 50;
+    growthrate += 1;
 
-    showCounter.innerHTML = `${counter.toFixed(2)} Shark Food (he hungy)`;
+    showCounter.innerHTML = `${Math.floor(counter)} Shark Food (he hungy)`;
     firstUpgradeButton.innerText = "🦐 ok...";
 
     firstUpgradeButton.disabled = counter < 10;
@@ -45,7 +45,7 @@ function updateCounter() {
   const nowTime = performance.now();
   const deltaTime = (nowTime - currentTimestamp) / 1000;
   counter += deltaTime * growthrate;
-  showCounter.innerHTML = `${counter.toFixed(2)} Shark Food (he hungy)`;
+  showCounter.innerHTML = `${Math.floor(counter)} Shark Food (he hungy)`;
 
   currentTimestamp = nowTime;
   requestAnimationFrame(updateCounter);
@@ -54,7 +54,7 @@ function updateCounter() {
 button.addEventListener("mousedown", () => {
   console.log("click registered");
   counter++;
-  showCounter.innerHTML = `${counter.toFixed(2)} Shark Food (he hungy)`;
+  showCounter.innerHTML = `${Math.floor(counter)} Shark Food (he hungy)`;
 });
 
 app.append(button);
