@@ -62,6 +62,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.upgrade-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  font-size: 1em;
+  padding: 0.5em 1em;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
