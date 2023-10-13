@@ -49,6 +49,12 @@ upgrades.forEach((upgrade) => {
     if (counter >= upgrade.cost) {
       counter -= upgrade.cost;
       upgrade.count++;
+
+      // update the upgrade cost
+      upgrade.cost *= 1.15;
+      upgrade.cost = Math.round(upgrade.cost * 100) / 100;
+      upgradeButton.innerText = `${upgrade.id}: Buy for ${upgrade.cost} braincells`;
+
       growthrate += upgrade.rate;
       showCounter.innerHTML = `${counter.toFixed(2)} Shark Food (he hungy)`;
       upgradeCountDisplay.innerHTML = `${upgrade.id}: ${upgrade.count} purchased`;
